@@ -1,0 +1,36 @@
+/**
+Базовый сброс стилей
+Начало
+*/
+html {
+	box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+}
+
+img {
+	max-width: 100%;
+}
+/**
+Базовый сброс стилей
+Конец
+*/
+
+body {
+	font-family: 'font', sans-serif;
+	margin: 0;
+}
