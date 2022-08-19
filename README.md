@@ -1,3 +1,7 @@
-# таск для конвертации шрифтов ttf в woff и woff2
+# gulp-сборка для верстки
 
-Используются плагины gulp-ttf2woff и gulp-ttf2woff2
+Используется плагин fileinclude.
+HTML для отдельных блоков нужно писать в папке src/html и подключать в index.html при помощи @include().
+
+_например:_
+@include('html/header.html')
