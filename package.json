@@ -14,8 +14,6 @@
     "gulp-svg-sprite": "^1.5.0",
     "gulp-svgmin": "^4.1.0",
     "gulp-tinypng-compress": "^1.2.5",
-    "gulp-ttf2woff": "^1.1.1",
-    "gulp-ttf2woff2": "^4.0.1",
     "gulp-typograf": "^4.0.3",
     "sass": "^1.51.0"
   }
