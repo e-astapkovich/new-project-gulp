@@ -187,17 +187,16 @@ const watchFiles = () => {
   watch(`${paths.srcImgFolder}/**/*.{ jpg, jpeg, png }`, imgToApp);
   watch(`${paths.srcImgFolder}/**/*.svg`, svgToApp);
   watch(paths.srcSvg, svgToSprite);
-  watch(`${paths.srcFontsFolder}/*.ttf`, fontsConvert);
   watch(paths.buildFontsFolder, fontStyle);
 };
 
 // map-файлы, картинки без сжатия
 exports.default = series(delDirDist, parallel(htmlInclude, imgToApp, svgToApp, svgToSprite), fontsWoffMove, fontStyle, styles, watchFiles);
-// exports.default = series(delDirDist, htmlInclude, fontsConvert, imgToApp, svgToApp, svgToSprite, fontsWoffMove, fontStyle, styles, watchFiles);
+// exports.default = series(delDirDist, htmlInclude, imgToApp, svgToApp, svgToSprite, fontsWoffMove, fontStyle, styles, watchFiles);
 
 // без map-файлов, картинки сжимаются Tinypng
 exports.build = series(delDirDist, parallel(htmlInclude, svgToApp, svgToSprite), fontsWoffMove, fontStyle, stylesBuild, imgCompress);
-// exports.build = series(delDirDist, htmlInclude, fontsConvert, svgToApp, svgToSprite, fontsWoffMove, fontStyle, stylesBuild, imgCompress);
+// exports.build = series(delDirDist, htmlInclude, svgToApp, svgToSprite, fontsWoffMove, fontStyle, stylesBuild, imgCompress);
 
 // TODO минифиированная версия
 // без map-файлов, картинки сжимаются Tinypng, HTML и CSS минифицируются
