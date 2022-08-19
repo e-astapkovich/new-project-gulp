@@ -9,8 +9,6 @@ const browserSync = require('browser-sync').create();
 const fileinclude = require('gulp-file-include');
 const svgmin = require('gulp-svgmin');
 const svgSprite = require('gulp-svg-sprite');
-const ttf2woff = require('gulp-ttf2woff');
-const ttf2woff2 = require('gulp-ttf2woff2');
 const fs = require('fs');
 const tinypng = require('gulp-tinypng-compress');
 const typograf = require('gulp-typograf');
@@ -134,16 +132,6 @@ const imgCompress = () => {
     .pipe(dest(paths.buildImgFolder))
 }
 
-// Конвертация шрифтов из TTF в WOFF и WOFF2
-const fontsConvert = () => {
-  src(`${paths.srcFontsFolder}/*.ttf`)
-    .pipe(ttf2woff())
-    .pipe(dest(paths.buildFontsFolder))
-  return src(`${paths.srcFontsFolder}/*.ttf`)
-    .pipe(ttf2woff2())
-    .pipe(dest(paths.buildFontsFolder))
-}
-
 const fontsWoffMove = () => {
   src(`${paths.srcFontsFolder}/*.woff`)
     .pipe(dest(paths.buildFontsFolder))
@@ -204,11 +192,11 @@ const watchFiles = () => {
 };
 
 // map-файлы, картинки без сжатия
-exports.default = series(delDirDist, parallel(htmlInclude, fontsConvert, imgToApp, svgToApp, svgToSprite), fontsWoffMove, fontStyle, styles, watchFiles);
+exports.default = series(delDirDist, parallel(htmlInclude, imgToApp, svgToApp, svgToSprite), fontsWoffMove, fontStyle, styles, watchFiles);
 // exports.default = series(delDirDist, htmlInclude, fontsConvert, imgToApp, svgToApp, svgToSprite, fontsWoffMove, fontStyle, styles, watchFiles);
 
 // без map-файлов, картинки сжимаются Tinypng
-exports.build = series(delDirDist, parallel(htmlInclude, fontsConvert, svgToApp, svgToSprite), fontsWoffMove, fontStyle, stylesBuild, imgCompress);
+exports.build = series(delDirDist, parallel(htmlInclude, svgToApp, svgToSprite), fontsWoffMove, fontStyle, stylesBuild, imgCompress);
 // exports.build = series(delDirDist, htmlInclude, fontsConvert, svgToApp, svgToSprite, fontsWoffMove, fontStyle, stylesBuild, imgCompress);
 
 // TODO минифиированная версия
