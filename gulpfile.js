@@ -198,6 +198,6 @@ exports.default = series(delDirDist, parallel(htmlInclude, imgToApp, svgToApp, s
 exports.build = series(delDirDist, parallel(htmlInclude, svgToApp, svgToSprite), fontsWoffMove, fontStyle, stylesBuild, imgCompress);
 // exports.build = series(delDirDist, htmlInclude, svgToApp, svgToSprite, fontsWoffMove, fontStyle, stylesBuild, imgCompress);
 
-// TODO минифиированная версия
+// TODO минифицированная версия
 // без map-файлов, картинки сжимаются Tinypng, HTML и CSS минифицируются
 // exports.buildmin = series()
