@@ -125,7 +125,7 @@ const svgToSprite = () => {
 
 // Сжатие изображений
 const imgCompress = () => {
-  return src(`${paths.srcImgFolder}*.{jpg, jpeg, png}`)
+  return src(`${paths.srcImgFolder}/*.{jpg, jpeg, png}`)
     .pipe(tinypng({
       key: 'GkvR94BWvvGD9tc4WP0zHM64P1fdDlJb',
       parallel: true,
@@ -175,8 +175,6 @@ const fontStyle = (done) => {
           let fontFamily = fontName.split('-')[0];
           let fontWeightWord = fontName.split('-')[1].toLowerCase();
           let fontWeightNumber = weights[fontWeightWord];
-          console.log(fontWeightWord);
-          console.log(fontWeightNumber);
           let fontStyle = fontName.split('-')[2] ? fontName.split('-')[2] : 'normal';
           fs.appendFileSync(paths.srcFontsScss, `@include font("${fontFamily}", ${fontWeightNumber}, ${fontStyle}, "${fontName}");\r\n`);
         }
