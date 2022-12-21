@@ -85,7 +85,11 @@ const htmlInclude = () => {
 
 // Перемещение изображений без сжатия
 const imgToApp = () => {
-  return src(`${paths.srcImgFolder}/*.{jpg, jpeg, png}`)
+  return src([
+    `${paths.srcImgFolder}/**/*.jpeg`,
+    `${paths.srcImgFolder}/**/*.jpg`,
+    `${paths.srcImgFolder}/**/*.png`
+    ])
     .pipe(dest(paths.buildImgFolder));
 }
 
@@ -125,7 +129,11 @@ const svgToSprite = () => {
 
 // Сжатие изображений
 const imgCompress = () => {
-  return src(`${paths.srcImgFolder}/*.{jpg, jpeg, png}`)
+  return src([
+    `${paths.srcImgFolder}/**/*.jpeg`,
+    `${paths.srcImgFolder}/**/*.jpg`,
+    `${paths.srcImgFolder}/**/*.png`
+    ])
     .pipe(tinypng({
       key: 'GkvR94BWvvGD9tc4WP0zHM64P1fdDlJb',
       parallel: true,
@@ -194,7 +202,11 @@ const watchFiles = () => {
 
   watch(paths.srcScss, styles);
   watch(`${srcFolder}/**/*.html`, htmlInclude);
-  watch(`${paths.srcImgFolder}/**/*.{ jpg, jpeg, png }`, imgToApp);
+  watch([
+    `${paths.srcImgFolder}/**/*.jpeg`,
+    `${paths.srcImgFolder}/**/*.jpg`,
+    `${paths.srcImgFolder}/**/*.png`
+    ], imgToApp);
   watch(`${paths.srcImgFolder}/**/*.svg`, svgToApp);
   watch(paths.srcSvg, svgToSprite);
   watch(`${paths.srcFontsFolder}/*.ttf`, fontsConvert);
